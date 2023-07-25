@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@green-api-test/core": ["libs/core/src/index.ts"],
       "@green-api-test/shared-types": ["libs/shared-types/src/index.ts"]
     }
   },
