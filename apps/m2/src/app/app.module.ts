@@ -5,6 +5,8 @@ import { SomeModuleModule } from './some-module/some-module.module';
 import { ENV_FILE_PATH } from './app.constants';
 import databaseConfig from '../config/database.config';
 import { validateEnvironment } from './env.validation';
+import { MongooseModule } from '@nestjs/mongoose';
+import { getMongoDbConfig } from '../config';
 
 @Module({
   imports: [
@@ -15,7 +17,10 @@ import { validateEnvironment } from './env.validation';
       load: [databaseConfig],
       validate: validateEnvironment,
     }),
-    SomeModuleModule
+    MongooseModule.forRootAsync(
+      getMongoDbConfig(),
+    ),
+    SomeModuleModule,
   ],
   controllers: [],
   providers: [],
