@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    container_name: green-api-rabbitmq
+    hostname: rabbitmq
+    ports:
+      - '15682:15672'
+      - '5682:5672'
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: test
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: green-api-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: test
+      MONGO_INITDB_DATABASE: green-api-some-objects
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./volumes/m2/db:/data/db
