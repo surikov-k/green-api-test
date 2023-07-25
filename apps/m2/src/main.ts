@@ -12,7 +12,7 @@ import { RmqService } from '@green-api-test/core';
 
 async function bootstrap() {
   const logger = new Logger('M2 microservice');
-  const app = await NestFactory.create(AppModule, {logger});
+  const app = await NestFactory.create(AppModule, { logger });
 
   const rmqService = app.get<RmqService>(RmqService)
   const configService = app.get<ConfigService>(ConfigService);

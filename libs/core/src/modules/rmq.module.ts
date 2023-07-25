@@ -25,7 +25,7 @@ export class RmqModule {
               const USER = configService.get('RABBITMQ_USER');
               const PASSWORD = configService.get('RABBITMQ_PASSWORD');
               const HOST = configService.get('RABBITMQ_HOST');
-              const QUEUE = configService.get(`RABBITMQ_${name}_QUEUE`);
+              const QUEUE = configService.get(`RABBITMQ_SERVICE_QUEUE`);
 
               return {
                 transport: Transport.RMQ,
