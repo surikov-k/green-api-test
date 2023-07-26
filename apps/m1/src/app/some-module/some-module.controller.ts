@@ -1,8 +1,9 @@
 import { Body, Controller, Get, HttpException, Param, Post } from '@nestjs/common';
 
 import { fillObject } from '@green-api-test/core';
-import { SomeModuleService } from './some-module.service';
+import { CheckMongoId } from '../../common/pipes';
 import { CreateSomeObjectDto } from './dto/create-some-object.dto';
+import { SomeModuleService } from './some-module.service';
 import { SomeObjectRdo } from './rdo';
 
 @Controller('some-object')
@@ -16,7 +17,7 @@ export class SomeModuleController {
   }
 
   @Get(':id')
-  public async get(@Param('id') id: string) {
+  public async get(@Param('id', CheckMongoId) id: string) {
     try {
       const someObject = await this.someModuleService.get(id);
       return fillObject(SomeObjectRdo, someObject);
