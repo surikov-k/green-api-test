@@ -36,3 +36,7 @@ nx run-many --target=serve --projects=m1,m2
 ```
 
 ---
+
+* [Swagger UI](http://localhost:3000/spec#/)
+
+---
